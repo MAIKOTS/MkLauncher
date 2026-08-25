@@ -1,0 +1,78 @@
+plugins {
+    alias(libs.plugins.android.application)
+}
+
+android {
+    namespace "MKLAUNCHER"
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "droid.mklauncher.app"
+        minSdk 24
+        targetSdk 35
+        versionCode 1
+        versionName "1.0"
+        
+        // 🟢 FILTRA IDIOMAS: Mantém apenas Português (Geral / Brasil) e Inglês.
+        // Remove traduções em espanhol, chinês, russo, etc. das libs AppCompat/Material
+        resourceConfigurations += ["pt-rBR"]
+        multiDexEnabled false
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            crunchPngs false // Mantém rápido sem re-comprimir PNGs durante dev
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    
+    packaging {
+        resources {
+            excludes += [
+                // 1. Pasta e Metadados do Kotlin (Pode apagar sem medo)
+                'kotlin/**',
+                '**/*.kotlin_builtins',
+                '**/*.bin',
+                'DebugProbesKt.bin',
+                'META-INF/kotlinx-coroutines-core.version',
+                'META-INF/kotlinx-coroutines-android.version',
+                'META-INF/*.kotlin_module',
+                'META-INF/*.version',
+
+                // 2. Licenças, Termos e Avisos de Copyright
+                'META-INF/LICENSE*',
+                'META-INF/license*',
+                'META-INF/NOTICE*',
+                'META-INF/notice*',
+                'META-INF/DEPENDENCIES*',
+                'META-INF/dependencies*',
+                'META-INF/AL2.0',
+                'META-INF/LGPL2.1',
+
+                // 3. Pastas de Ferramentas e Metadados de Libs de Terceiros
+                'META-INF/com.android.tools/**',
+                'META-INF/androidx.**',
+                'META-INF/google/**',
+                
+                // 4. Arquivos de Assinaturas antigas/duplicadas
+                'META-INF/*.SF',
+                'META-INF/*.DSA',
+                'META-INF/*.RSA'
+            ]
+        }
+    }
+}
+
+dependencies {
+    implementation libs.androidx.appcompat
+    implementation libs.material
+}
