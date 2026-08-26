@@ -4,6 +4,21 @@ Um Launcher Android leve, moderno e customizável desenvolvido em Java puro nati
 
 ---
 
+## 📱 Screenshots
+
+<details>
+<summary>📸 <b>Clique para expandir/ocultar as capturas de tela</b></summary>
+
+<br />
+
+| Interface Principal | Menu de Opções | Configurações / Mídia |
+| :---: | :---: | :---: |
+| <img src="https://github.com/user-attachments/assets/04d21034-aa83-47f1-9321-2c6c2f63eb53" width="220" alt="Tela Principal" /> | <img src="https://github.com/user-attachments/assets/c90dd758-66d9-45db-9914-a585a43a740d" width="220" alt="Menu Popup" /> | <img src="https://github.com/user-attachments/assets/ff60d179-7b6a-4854-a010-875d7cdf6c2f" width="220" alt="Opções do Launcher" /> |
+
+</details>
+
+---
+
 ## ✨ Principais Funcionalidades
 
 - **Gerenciamento de Aplicativos:** Listagem completa de todos os apps instalados no dispositivo com suporte a busca em tempo real.
@@ -41,14 +56,4 @@ MKLAUNCHER/
 │   │   └── AppOptionsPopup.java     # Menu flutuante de ações do app
 │   ├── telas/
 │   │   ├── AppsPage.java            # Página principal de listagem e busca de apps
-│   │   ├── ScreenFactory.java       # Fábrica de views das páginas
-│   │   ├── ShortcutsPage.java       # Página de Atalhos
-│   │   ├── TelaConfigs.java         # Tela de Configurações
-│   │   ├── TelaRecentes.java        # Histórico de apps recentes
-│   │   └── subtelas/configs/        # Subtelas (ex: TelaPermissoes)
-│   └── widgets/
-│       └── SplitScreenManager.java  # Gerenciador de lógica de Tela Dividida
-│
-└── ultil/
-    ├── AppLoader.java               # Carregador e indexador de apps instalados
-    └── LauncherHelper.java          # Utilitários de lançamento e janelas
+│   │   └── ScreenFactory.java       # Fábrica de views das páginas
