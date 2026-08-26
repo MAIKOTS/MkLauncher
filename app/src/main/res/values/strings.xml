@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name"> MkLauncher </string>
+    <string name="app_name">MkLauncher</string>
+    <string name="permission_granted">Permissão concedida!</string>
+    <string name="permission_denied">Permissão negada pelo usuário</string>
 </resources>
