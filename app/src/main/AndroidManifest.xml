@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    
+    <uses-permission 
+        android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+        
+    <!-- Permissão para ignorar otimizações de bateria (Economia de Bateria) -->
+    <uses-permission 
+        android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
+
+    <!-- Permissão para o Serviço de Acessibilidade (Gestos e bloqueio de tela) -->
+    <uses-permission 
+        android:name="android.permission.BIND_ACCESSIBILITY_SERVICE"/>
+
+    <!-- Permissão para leitura de notificações (Badges e contadores) -->
+    <uses-permission 
+        android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"/>
+
+    <!-- Permissão para consultas de pacotes (Essencial para o Launcher listar os apps instalados) -->
+    <uses-permission 
+        android:name="android.permission.QUERY_ALL_PACKAGES"/>
+    
+    <!-- Permissão para Acesso a Todos os Arquivos (Android 11+) -->
+    <uses-permission 
+        android:name="android.permission.MANAGE_EXTERNAL_STORAGE" 
+        tools:ignore="ScopedStorage" />
+    
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="MkLauncher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MKLAUNCHER">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:stateNotNeeded="true"
+            android:windowSoftInputMode="adjustResize"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden|smallestScreenSize">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.HOME" />
+                
+                <!-- Adicionado para facilitar a navegação em testes -->
+                <category android:name="android.intent.category.LAUNCHER" />  
+                
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            
+        </activity>
+
+        <!-- Declaração do Serviço de Acessibilidade (caso venha a criar a classe no futuro) -->
+        <service 
+            android:name=".ultil.MyAccessibilityService"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+        </service>
+        
+    </application>
+
+</manifest>
