@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import MKLAUNCHER.ui.icones.IconeApps;
 import MKLAUNCHER.ui.icones.IconeConfiguracoes;
 import MKLAUNCHER.ui.icones.IconeRecentes;
+import MKLAUNCHER.ui.icones.IconeShortcuts;
 
 public class BottomNavigationBar {
 
@@ -20,14 +21,18 @@ public class BottomNavigationBar {
     private static final int COLOR_SELECTED = Color.parseColor("#222222");
     private static final int COLOR_DIVIDER = Color.parseColor("#2A2A2A");
 
-    private static ImageView selectedBtn = null;
+    // changed from static to instance field
+    private ImageView selectedBtn = null;
 
-    public static View create(Context ctx, 
+    public BottomNavigationBar() {
+    }
+
+    public View create(Context ctx, 
                               final View.OnClickListener onApps, 
                               final View.OnClickListener onShortcuts, 
                               final View.OnClickListener onRecents,
                               final View.OnClickListener onSettings) {
-                              
+                               
         LinearLayout bar = new LinearLayout(ctx);
         bar.setOrientation(LinearLayout.HORIZONTAL);
         bar.setBackgroundColor(COLOR_BG);
@@ -42,7 +47,7 @@ public class BottomNavigationBar {
         bar.setPadding(0, paddingVert, 0, paddingVert);
 
         final ImageView btnApps = createButton(ctx, new IconeApps(), density);
-        final ImageView btnShortcuts = createButton(ctx, new IconeApps(), density); 
+        final ImageView btnShortcuts = createButton(ctx, new IconeShortcuts(), density); 
         final ImageView btnRecents = createButton(ctx, new IconeRecentes(), density);
         final ImageView btnSettings = createButton(ctx, new IconeConfiguracoes(), density);
 
@@ -90,7 +95,7 @@ public class BottomNavigationBar {
         return bar;
     }
 
-    private static ImageView createButton(Context ctx, Drawable icon, float density) {
+    private ImageView createButton(Context ctx, Drawable icon, float density) {
         ImageView btn = new ImageView(ctx);
         btn.setImageDrawable(icon);
         btn.setScaleType(ScaleType.FIT_CENTER);
@@ -106,7 +111,7 @@ public class BottomNavigationBar {
         return btn;
     }
 
-    private static View createDivider(Context ctx, float density) {
+    private View createDivider(Context ctx, float density) {
         View divider = new View(ctx);
         divider.setBackgroundColor(COLOR_DIVIDER);
         
@@ -120,7 +125,7 @@ public class BottomNavigationBar {
         return divider;
     }
 
-    private static void highlightButton(ImageView btn) {
+    private void highlightButton(ImageView btn) {
         if (selectedBtn != null) {
             selectedBtn.setBackgroundColor(Color.TRANSPARENT);
         }
