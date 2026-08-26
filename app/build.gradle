@@ -26,17 +26,10 @@ android {
         }
         release {
             minifyEnabled true
-            shrinkResources true
+            shrinkResources true // O R8 já remove recursos não utilizados da pasta res automaticamente
             signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-    }
-
-    // 🟢 REMOVE RECURSOS NÃO UTILIZADOS DA PASTA RES
-    // Substitui arquivos XML, ícones e drawables não referenciados por stubs mínimos de 1 byte
-    androidResources {
-        noCompress += []
-        discardUnusedResources true
     }
 
     compileOptions {
