@@ -5,6 +5,7 @@ on:
     branches: [ "main", "master" ]
     tags:
       - 'v*'
+      - 'V*'
   pull_request:
     branches: [ "main", "master" ]
 
